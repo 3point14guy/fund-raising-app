@@ -1,0 +1,15 @@
+<h1><%= @project.title %></h1>
+<div class="row">
+  <div class="col-md-6">
+    <p>Amount pledged: <%= number_to_currency(@project.funding) %></p>
+    <p>Funding goal: <%= number_to_currency(@project.goal) %></p>
+  </div>
+  <div class="col-md-6">
+    <p>Days remaining: <%= days_left(@project.deadline) %></p>
+  </div>
+</div>
+
+<hr>
+<p><%= @project.description %></p>
+<br>
+<%= link_to "Available Projects", root_path, class: "btn btn-outline-primary" %>

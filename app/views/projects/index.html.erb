@@ -6,7 +6,7 @@
 <div class="row">
   <% @projects.each do |project| %>
     <div class="col-md-8 col-sm-10">
-      <h3><%= link_to project.title, projects_path %></h3>
+      <h3><%= link_to project.title, project_path(project) %></h3>
       <p><%= truncate(project.description, length: 100, separator: ' ') %></p>
       <p>Amount pledged: <%= number_to_currency(project.funding) %></p>
       <p>Funding goal: <%= number_to_currency(project.goal) %></p>
