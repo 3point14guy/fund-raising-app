@@ -1,4 +1,4 @@
-<h1>Availble Projects</h1>
+<h1><%= @projects.count %> Available Projects</h1>
 
 <p>The following projects are still accepting investors:
 </p>
@@ -6,11 +6,11 @@
 <div class="row">
   <% @projects.each do |project| %>
     <div class="col-md-8 col-sm-10">
-      <h3><%= link_to project.title, project %></h3>
+      <h3><%= link_to project.title, projects_path %></h3>
       <p><%= truncate(project.description, length: 100, separator: ' ') %></p>
-      <p>Amount pledged: $<%= project.funding %></p>
-      <p>Funding goal: $<%= project.goal %></p>
-      <p>Days remaining: <%= project.deadline %></p>
+      <p>Amount pledged: <%= number_to_currency(project.funding) %></p>
+      <p>Funding goal: <%= number_to_currency(project.goal) %></p>
+      <p>Funding deadline: <%= project.deadline.strftime("%m/%d/%Y") %></p>
     </div>
   <% end %>
 </div>

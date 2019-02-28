@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  funding: 9.99
+  goal: 9.99
+  deadline: 2019-02-27
+
+two:
+  title: MyString
+  description: MyText
+  funding: 9.99
+  goal: 9.99
+  deadline: 2019-02-27
