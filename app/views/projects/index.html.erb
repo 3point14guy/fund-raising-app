@@ -11,6 +11,8 @@
       <p>Amount pledged: <%= number_to_currency(project.funding) %></p>
       <p>Funding goal: <%= number_to_currency(project.goal) %></p>
       <p>Days remaining: <%= days_left(project.deadline) %></p>
+      <hr>
     </div>
+
   <% end %>
 </div>
