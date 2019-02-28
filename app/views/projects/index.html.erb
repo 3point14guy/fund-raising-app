@@ -1,0 +1,16 @@
+<h1>Availble Projects</h1>
+
+<p>The following projects are still accepting investors:
+</p>
+
+<div class="row">
+  <% @projects.each do |project| %>
+    <div class="col-md-8 col-sm-10">
+      <h3><%= link_to project.title, project %></h3>
+      <p><%= truncate(project.description, length: 100, separator: ' ') %></p>
+      <p>Amount pledged: $<%= project.funding %></p>
+      <p>Funding goal: $<%= project.goal %></p>
+      <p>Days remaining: <%= project.deadline %></p>
+    </div>
+  <% end %>
+</div>
