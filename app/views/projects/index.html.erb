@@ -1,4 +1,4 @@
-<h1><%= @projects.count %> Available Projects</h1>
+<h1><%= pluralize(@projects.count, 'Project' ) %> Available</h1>
 
 <p>The following projects are still accepting investors:
 </p>
@@ -10,7 +10,7 @@
       <p><%= truncate(project.description, length: 100, separator: ' ') %></p>
       <p>Amount pledged: <%= number_to_currency(project.funding) %></p>
       <p>Funding goal: <%= number_to_currency(project.goal) %></p>
-      <p>Funding deadline: <%= project.deadline.strftime("%m/%d/%Y") %></p>
+      <p>Days remaining: <%= days_left(project.deadline) %></p>
     </div>
   <% end %>
 </div>
