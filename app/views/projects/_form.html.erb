@@ -1,45 +1,66 @@
 <%= form_for(@project) do |f| %>
-  <div class="col-md-12">
-    <p>
-      <%= f.label :title %>
-      <%= f.text_field :title, autofocus: true, class: "form-control" %>
-    </p>
-  </div>
-  <div class="col-md-12">
-    <p>
-      <%= f.label :description %>
-      <%= f.text_area :description, class: "form-control" %>
-    </p>
-  </div>
-  <div class="col-md-3 col-sm-5">
-    <p>
-      <%= f.label "Amount Pledged" %>
-      <%= f.number_field :funding, class: "form-control" %>
-    </p>
-  </div>
-  <div class="col-md-3 col-sm-5">
-    <p>
-      <%= f.label :goal %>
-      <%= f.number_field :goal, class: "form-control" %>
-    </p>
-  </div>
-  <div class="col-md-3 col-sm-5">
-    <p>
-      <%= f.label :deadline %>
-    <%= f.date_field :deadline, class: "form-control" %>
-    </p>
-  </div>
-  <div class="row">
-    <div class="col-md-9 col-sm-7">
+  <% if @project.errors.any? %>
+    <div class="card bg-light col-md-10 offset-md-1">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= pluralize(@project.errors.count, "error") %>
+          prohibited this project from being saved:
+        </h5>
+        <div class="card-text">
+          <ul>
+            <% @project.errors.full_messages.each do |msg| %>
+              <li>
+                <%= msg %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <br>
+    <div class="col-md-12">
       <p>
-        <%= f.submit class: "btn btn-success" %>
+        <%= f.label :title %>
+        <%= f.text_field :title, autofocus: true, class: "form-control" %>
+      </p>
+    </div>
+    <div class="col-md-12">
+      <p>
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "form-control" %>
       </p>
     </div>
     <div class="col-md-3 col-sm-5">
       <p>
-        <%= link_to "Cancel", :back, class: "btn btn-danger" %>
+        <%= f.label "Amount Pledged" %>
+        <%= f.number_field :funding, class: "form-control" %>
       </p>
     </div>
-  </div>
+    <div class="col-md-3 col-sm-5">
+      <p>
+        <%= f.label :goal %>
+        <%= f.number_field :goal, class: "form-control" %>
+      </p>
+    </div>
+    <div class="col-md-3 col-sm-5">
+      <p>
+        <%= f.label :deadline %>
+      <%= f.date_field :deadline, class: "form-control" %>
+      </p>
+    </div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="row">
+      <div class="col-md-9 col-sm-7">
+        <p>
+          <%= f.submit class: "btn btn-success" %>
+        </p>
+      </div>
+      <div class="col-md-3 col-sm-5">
+        <p>
+          <%= link_to "Cancel", :back, class: "btn btn-danger" %>
+        </p>
+      </div>
+    </div>
 
 <% end %>

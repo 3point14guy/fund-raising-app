@@ -9,6 +9,10 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    unless @project.user_id == current_user
+      flash[:alert] = "You can only edit your own projects."
+      redirect_to root_path
+    end
   end
 
   def update
@@ -18,7 +22,7 @@ class ProjectsController < ApplicationController
       redirect_to @project
     else
       flash.now[:alert] = "Changes did not save."
-      render edit
+      render :edit
     end
   end
 
@@ -33,13 +37,18 @@ class ProjectsController < ApplicationController
       redirect_to @project
     else
       flash.now[:alert] = "There was an error creating the project."
-      render new
+      render :new
     end
   end
 
   def destroy
-    @project.destroy
-    redirect_to root
+    unless @project.user_id == current_user
+      flash[:alert] = "You can only delete your own projects."
+      redirect_to root_path
+    else
+      @project.destroy
+      redirect_to root_path
+    end
   end
 
 private
@@ -49,6 +58,6 @@ private
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, :funding, :goal, :deadline)
+    params.require(:project).permit(:title, :description, :funding, :goal, :deadline, :user_id)
   end
 end
