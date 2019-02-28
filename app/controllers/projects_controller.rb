@@ -1,19 +1,17 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
     @projects = Project.where("deadline >= ?", Date.today)
   end
 
   def show
-    @project = Project.find(params[:id])
   end
 
   def edit
-    @project = Project.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
     @project.update(project_params)
     if @project.save
       flash[:notice] = "Project updated successfully!"
@@ -40,12 +38,16 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
     redirect_to root
   end
 
 private
+
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
   def project_params
     params.require(:project).permit(:title, :description, :funding, :goal, :deadline)
   end
