@@ -2,7 +2,17 @@
 
 <p>The following projects are still accepting investors:
 </p>
+<div class="row">
+  <div class="col-md-6 col-sm-6">
 
+  </div>
+  <div class="col-md-3 col-sm-4">
+    <%= link_to "New Project", projects_new_path, class: "btn btn-outline-success" %>
+  </div>
+</div>
+
+<br>
+<br>
 <div class="row">
   <% @projects.each do |project| %>
     <div class="col-md-8 col-sm-10">

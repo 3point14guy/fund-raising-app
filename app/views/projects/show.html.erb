@@ -6,7 +6,8 @@
   </div>
   <div class="col-md-6">
     <p>Days remaining: <%= days_left(@project.deadline) %></p>
-    <%= link_to "Edit", edit_project_path(@project), class: "btn  btn-outline-warning" %>
+    <%= link_to "Edit", edit_project_path(@project), class: "btn btn-outline-warning" %>
+    <%= link_to "Delete", project_path(@project), method: :delete, class: "btn btn-outline-danger" %>
   </div>
 </div>
 
