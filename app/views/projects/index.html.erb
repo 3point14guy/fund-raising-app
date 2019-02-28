@@ -19,7 +19,19 @@
       <h3><%= link_to project.title, project_path(project) %></h3>
       <p><%= truncate(project.description, length: 100, separator: ' ') %></p>
       <p>Amount pledged: <%= number_to_currency(project.funding) %></p>
-      <p>Funding goal: <%= number_to_currency(project.goal) %></p>
+      <% if goal_reached(project) %>
+        <div class="row">
+          <div class="col-sm-6">
+            <p>Funding goal: <%= number_to_currency(project.goal) %></p>
+          </div>
+          <div class="col-sm-6">
+            <h5 class="goal-achieved">GOAL ACHIEVED!!</h5>
+          </div>
+        </div>
+      <% else %>
+        <p>Funding goal: <%= number_to_currency(project.goal) %></p>
+      <% end %>
+
       <p>Days remaining: <%= days_left(project.deadline) %></p>
       <hr>
     </div>
