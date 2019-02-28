@@ -6,10 +6,12 @@
   </div>
   <div class="col-md-6">
     <p>Days remaining: <%= days_left(@project.deadline) %></p>
+    <%= link_to "Edit", edit_project_path(@project), class: "btn  btn-outline-warning" %>
   </div>
 </div>
 
 <hr>
 <p><%= @project.description %></p>
 <br>
-<%= link_to "Available Projects", root_path, class: "btn btn-outline-primary" %>
+
+<%= link_to "All Projects", root_path, class: "btn btn-outline-primary" %>

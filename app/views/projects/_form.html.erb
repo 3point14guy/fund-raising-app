@@ -1,0 +1,37 @@
+<%= form_for(@project) do |f| %>
+  <div class="col-md-12">
+    <p>
+      <%= f.label :title %>
+      <%= f.text_field :title, autofocus: true, class: "form-control" %>
+    </p>
+  </div>
+  <div class="col-md-12">
+    <p>
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control" %>
+    </p>
+  </div>
+  <div class="col-md-3 col-sm-5">
+    <p>
+      <%= f.label "Amount Pledged" %>
+      <%= f.number_field :funding, class: "form-control" %>
+    </p>
+  </div>
+  <div class="col-md-3 col-sm-5">
+    <p>
+      <%= f.label :goal %>
+      <%= f.number_field :goal, class: "form-control" %>
+    </p>
+  </div>
+  <div class="col-md-3 col-sm-5">
+    <p>
+      <%= f.label :deadline %>
+    <%= f.date_field :deadline, class: "form-control" %>
+    </p>
+  </div>
+  <div class="col-md-3 col-sm-5">
+    <p>
+      <%= f.submit class: "btn btn-success" %>
+    </p>
+  </div>
+<% end %>
